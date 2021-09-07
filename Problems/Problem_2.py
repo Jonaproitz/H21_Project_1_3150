@@ -2,14 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def p(filename):
+	# Fetch data textfile
 	A = np.loadtxt(filename)
-	A = np.transpose(A)
 	
+	# Plot data
+	A_T = np.transpose(A)
+	plt.rc("xtick", labelsize=13)
+	plt.rc("ytick", labelsize=13)
 	plt.figure()
-	plt.title("")
+	plt.title("Exact solution to differential equation", fontsize=15)
 
-	plt.plot(A[0], A[1])
+	plt.plot(A_T[0], A_T[1])
 
+	plt.xlabel("$x$", fontsize=13)
+	plt.ylabel("$u(x)$", fontsize=13)
+
+	plt.grid()
 	plt.show()
 
 p("matrix.txt")
