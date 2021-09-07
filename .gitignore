@@ -49,6 +49,7 @@
 *.cb
 *.cb2
 .*.lb
+*.bib
 
 ## Intermediate documents:
 *.dvi
