@@ -540,4 +540,5 @@ tags
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,latex,python,c++,vim,macos
 
 matrix.txt
+approx.txt
 .vscode
