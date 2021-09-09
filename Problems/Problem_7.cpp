@@ -12,7 +12,7 @@ int main(int argc, char* argv[]){
     // Initial setup of necessary vectors
     int m = atoi(argv[1]);
     arma::vec x = arma::linspace(0, 1, m);
-    double h = x(1) - x(0);
+    double h = 1.0 / (m-1);
     arma::vec f = f_i(x) * h*h;
 
     double v_0 = 0;
