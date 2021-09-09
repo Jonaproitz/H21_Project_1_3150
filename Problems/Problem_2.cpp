@@ -25,8 +25,8 @@ int main(int argc, char* argv[]){
     ofile.open(filename);
 
     // Set width and precision
-    int width = 12;
-    int prec = 4;
+    int width = 18;
+    int prec = 10;
 
     // Loop over rows
     for (int i = 0; i < N; i++)
