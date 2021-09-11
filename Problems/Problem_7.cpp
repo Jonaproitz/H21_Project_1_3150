@@ -53,8 +53,7 @@ int main(int argc, char* argv[]){
     }
     
     // Implement solution into the complete solution
-    arma::vec v_star_merge = join_cols(v_star_1, v);
-    arma::vec v_star = join_cols(v_star_merge, v_star_m);
+    arma::vec v_star = join_cols(v_star_1, v, v_star_m);
 
     // Set filename and open file
     std::string filename = "approx.txt";
