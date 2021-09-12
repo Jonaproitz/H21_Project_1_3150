@@ -76,10 +76,10 @@
 
 \title{FYS3150 oppgavesett 1}
 
-\author{Jon Aleksander Prøitz og Marius Torsvoll}
+\author{Jon Aleksander Prøitz and Marius Torsvoll}
 
 \begin{abstract}
-\noindent Alle løsninger på programmeringsspørsmålene kan finnes her: \\
+\noindent Relevant code can be found at:
 \url{https://github.com/Jonaproitz/Project_1}
 \end{abstract}
 
@@ -87,50 +87,65 @@
 %\date{Received - / Accepted -}
 
 
-\section*{Oppgave 1.}
+\section*{Problem 1.}
     \label{sec:oppgave1}
-    Vis at:
-    \begin{equation*}
+    Given
+    \begin{equation}
             u(x) 
         =   1-(1-e^{-10})x - e^{-10x}
-    \end{equation*}
+        \label{u}
+    \end{equation}
+    Inserting $x = 0$ 
     \begin{equation*}
-            -\frac{\partial^2 u}{\partial x^2} 
+            u(0)
+        =   1 - (1 - e^{-10}) \cdot 0 - e^{-10 \cdot 0}
+        =   1 - 0 - 1
+        =   0
+    \end{equation*}
+    and $x = 1$
+    \begin{equation*}
+            u(1)
+        =   1 - (1 - e^{-10}) \cdot 1 - e^{-10 \cdot 1}
+        =   1 - 1 + e^{-10} - e^{-10}
+        =   0
+    \end{equation*}
+    furthermore the one-dimensional possion equation can be written
+    \begin{equation*}
+            -\frac{d^2 u}{d x^2} 
+        =   -\frac{d^2}{d x^2}\left(1-(1-e^{-10})x - e^{-10x}\right)
+        =   -\frac{d}{d x}\left((1-e^{-10}) + 10e^{-10x} \right) 
         =   100e^{-10x}
+        =   f(x)
     \end{equation*}
-    Dette sjekkes med en kjapp derivasjon
-    \begin{equation*}
-            \left(1-(1-e^{-10})x - e^{-10x}\right)'' 
-        \Rightarrow 
-            \left((1-e^{-10}) + 10e^{-10x} \right)' 
-        =   -100e^{-10x}
-        =   -f(x)
-    \end{equation*}
+    Hence \ref{u} is an exact solution to our problem.
+    \hfill$\blacksquare$
 
 
-\section*{Oppgave 2.}
+\section*{Problem 2.}
     \label{sec:oppgave2}
     Se githublink 
 
 
-\section*{Oppgave 3.}
+\section*{Problem 3.}
+    The one-dimensional poisson equation can be written
     \begin{equation*}
             -\frac{d ^2 u}{dx^2} 
         =   \frac{u(x-h)+2u(x)- u(x+h)}{h^2} + O(h^2)
+        =   f(x)
     \end{equation*}
-    Diskretiserer den dobbeltderiverte med følgende definisjoner.
+    Discretizing $x$ with a given distance $h$ between each distinct value then gives
     \begin{align*}
             x 
         \rightarrow 
-            x_0, x_1, x_2 ....\\
+            x_0, x_1, x_2, ..., x_m\\
             u(x) 
         \rightarrow 
-            u_0, u_1, u_2 ....\\
+            u_0, u_1, u_2, ..., u_m\\
             f(x) 
         \rightarrow 
-            f_0, f_1 , f_2 ....
+            f_0, f_1 , f_2, ..., f_m
     \end{align*}
-    Vi tilnærmer $u \approx v$ og får:
+    with $u_i = v_i$, such that
     \begin{equation*}
             -\frac{d^2 v_i}{dx^2} 
         =   -v_{i-1} + 2v_i - v_{i+1} 
@@ -138,25 +153,35 @@
     \end{equation*}
 
 
-\section*{Oppgave 4.}
+\section*{Problem 4.}
     \label{sec:oppgave4}
-    Settet med likninger fra oppgave 3 kan skrives som: 
+    The set of equations from problem 3 can be written as 
     \begin{align*}
-            2v_i - v_2 
-        =   h^2 f_1  + v_0
-        =   g_1\\
+            -v_0 + 2v_1 - v_2 
+        &=  h^2 f_1\\
             -v_1 + 2v_2 -v_3 
-        =   h^2 f_2 
-        =   g_2\\
+        &=  h^2 f_2\\
             -v_2 + 2v_3- v_4 
-        =   h^2 f_3 
-        =   g_3\\
-        \vdots\\
-            -v_{m-2} + 2 v_{m-1} 
-        =   h^2 f_{m-1} + v_m 
-        =   g_{m-1}
+        &=  h^2 f_3\\
+        \vdots&\\
+            -v_{m-2} + 2 v_{m-1} - v_m
+        &=  h^2 f_{m-1}
     \end{align*}
-    Som kan skrives om til:
+    Wich for 
+    \begin{align*}
+            g_1
+        =&  h^2 f_1 + v_0\\
+            g_2
+        =&  h^2 f_2\\
+            g_3
+        =&  h^2 f_3\\
+        &\vdots\\
+            g_{m - 2}
+        =&  h^2 f_{m-2}\\
+            g_{m-1}
+        =&  h^2 f_{m-1} + v_{m}
+    \end{align*}
+    can be written as the matrix equation
     \begin{equation*}
             \begin{pmatrix}
                 2 & -1 & 0 &0 & 0 & \dots
@@ -165,24 +190,28 @@
                 \\
                 0 & -1 & 2 & -1 & 0 & \dots
                 \\
-                & & & &  \ddots
+                \vdots & \vdots & & \ddots & \ddots
                 \\
                 0 & 0 & 0 & 0 & -1 & 2 
             \end{pmatrix}
             \begin{pmatrix}
-                _1 \\ v_2 \\ v_3 \\ \vdots \\ v_n 
+                v_1 \\ v_2 \\ v_3 \\ \vdots \\ v_{m - 1} 
             \end{pmatrix} 
-        = 
-            \begin{pmatrix}
-                g_1 \\ g_2 \\ g_3 \\ \vdots \\ g_n
+        =   \begin{pmatrix}
+                g_1 \\ g_2 \\ g_3 \\ \vdots \\ g_{m - 1}
             \end{pmatrix}
     \end{equation*}
 
 
-\section*{Oppgave 5}
+\section*{Problem 5}
     \subsection*{a}
         \label{sec:oppgave5a}
-        Siden første og siste element er kjente verdier vil da  $n = m-2$
+        When finding the matrix, $A$, in problem 4 it is assumed that $v_0$ and $v_m$ are known.
+        Hence theese values are not calculated and
+        \begin{equation*}
+                n
+            =   m - 2
+        \end{equation*}
     \subsection*{b}
         \label{sec:oppgave5b}
 
