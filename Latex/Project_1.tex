@@ -88,68 +88,103 @@
 
 
 \section*{Oppgave 1.}
-\label{sec:oppgave1}
-Vis at:
-\begin{equation}
-u(x) = 1-(1-e^{-10})x - e^{-10x}
-$$Oppfyller:$$
--\frac{\partial^2 u}{\partial x^2} = 100e^{-10x}
-$$Dette sjekkes med en kjapp derivasjon$$
-\left(1-(1-e^{-10})x - e^{-10x}\right)'' \Rightarrow $$\\$$ \Rightarrow \left((1-e^{-10}) + 10e^{-10x} \right)' = - 100e^{-10x}
-\end{equation}
+    \label{sec:oppgave1}
+    Vis at:
+    \begin{equation*}
+            u(x) 
+        =   1-(1-e^{-10})x - e^{-10x}
+    \end{equation*}
+    \begin{equation*}
+            -\frac{\partial^2 u}{\partial x^2} 
+        =   100e^{-10x}
+    \end{equation*}
+    Dette sjekkes med en kjapp derivasjon
+    \begin{equation*}
+            \left(1-(1-e^{-10})x - e^{-10x}\right)'' 
+        \Rightarrow 
+            \left((1-e^{-10}) + 10e^{-10x} \right)' 
+        =   -100e^{-10x}
+        =   -f(x)
+    \end{equation*}
+
+
 \section*{Oppgave 2.}
-\label{sec:oppgave2}
-Se githublink 
+    \label{sec:oppgave2}
+    Se githublink 
+
+
 \section*{Oppgave 3.}
-\begin{equation}
-- \frac{d ^2 u}{dx^2} = \frac{u(x-h)+2u(x)- u(x+h)}{h^2} + O(h^2)
-$$Diskretiserer den dobbeltderiverte med følgende definisjoner.\\$$
-x \rightarrow x_0, x_1, x_2 ....
-$$\\$$
-u(x) \rightarrow u_0, u_1, u_2 ....
-$$\\$$
-f(x) \rightarrow f_0, f_1 , f_2 ....
-$$Vi tilnærmer $u \approx v$ og får: \\$$
-- \frac{d^2 v_i}{dx^2} = - v_{i-1} + 2v_i - v_{i+1} = f_ih^2
-\end{equation}
+    \begin{equation*}
+            -\frac{d ^2 u}{dx^2} 
+        =   \frac{u(x-h)+2u(x)- u(x+h)}{h^2} + O(h^2)
+    \end{equation*}
+    Diskretiserer den dobbeltderiverte med følgende definisjoner.
+    \begin{align*}
+            x 
+        \rightarrow 
+            x_0, x_1, x_2 ....\\
+            u(x) 
+        \rightarrow 
+            u_0, u_1, u_2 ....\\
+            f(x) 
+        \rightarrow 
+            f_0, f_1 , f_2 ....
+    \end{align*}
+    Vi tilnærmer $u \approx v$ og får:
+    \begin{equation*}
+            -\frac{d^2 v_i}{dx^2} 
+        =   -v_{i-1} + 2v_i - v_{i+1} 
+        =   f_ih^2
+    \end{equation*}
+
+
 \section*{Oppgave 4.}
-\label{sec:oppgave4}
-Settet med likninger fra oppgave 3 kan skrives som: 
-\begin{equation}
-2v_i - v_2 = h^2 f_1  + v_0= g_1 
-$$\\$$
-- v_1 + 2v_2 -v_3 = h^2 f_2 = g_2 
-$$\\$$
--v_2 + 2v_3- v_4 = h^2 f_3 = g_3 
-$$\\$$
-\vdots
-$$\\$$
-- v_{m-2} + 2 v_{m-1} = h^2 f_{m-1} + v_m = g_{m-1}
-$$Som kan skrives om til: \\$$
-\begin{pmatrix}
-2 & -1 & 0 &0 & 0 & \dots
-\\
--1 & 2 & -1 & 0 & 0 & \dots
-\\
-0 & -1 & 2 & -1 & 0 & \dots
-\\
-& & & &  \ddots
-\\
-0 & 0 & 0 & 0 & -1 & 2 
-\end{pmatrix}
-\begin{pmatrix}
-v_1 \\ v_2 \\ v_3 \\ \vdots \\ v_n 
-\end{pmatrix} 
-= 
-\begin{pmatrix}
-g_1 \\ g_2 \\ g_3 \\ \vdots \\ g_n
-\end{pmatrix}
-\end{equation}
-\section*{Oppgave 5a}
-\label{sec:oppgave5a}
-Siden første og siste element er kjente verdier vil da  $n = m-2$
-\section*{Oppgave 5b}
-\label{sec:oppgave5b}
+    \label{sec:oppgave4}
+    Settet med likninger fra oppgave 3 kan skrives som: 
+    \begin{align*}
+            2v_i - v_2 
+        =   h^2 f_1  + v_0
+        =   g_1\\
+            -v_1 + 2v_2 -v_3 
+        =   h^2 f_2 
+        =   g_2\\
+            -v_2 + 2v_3- v_4 
+        =   h^2 f_3 
+        =   g_3\\
+        \vdots\\
+            -v_{m-2} + 2 v_{m-1} 
+        =   h^2 f_{m-1} + v_m 
+        =   g_{m-1}
+    \end{align*}
+    Som kan skrives om til:
+    \begin{equation*}
+            \begin{pmatrix}
+                2 & -1 & 0 &0 & 0 & \dots
+                \\
+                -1 & 2 & -1 & 0 & 0 & \dots
+                \\
+                0 & -1 & 2 & -1 & 0 & \dots
+                \\
+                & & & &  \ddots
+                \\
+                0 & 0 & 0 & 0 & -1 & 2 
+            \end{pmatrix}
+            \begin{pmatrix}
+                _1 \\ v_2 \\ v_3 \\ \vdots \\ v_n 
+            \end{pmatrix} 
+        = 
+            \begin{pmatrix}
+                g_1 \\ g_2 \\ g_3 \\ \vdots \\ g_n
+            \end{pmatrix}
+    \end{equation*}
+
+
+\section*{Oppgave 5}
+    \subsection*{a}
+        \label{sec:oppgave5a}
+        Siden første og siste element er kjente verdier vil da  $n = m-2$
+    \subsection*{b}
+        \label{sec:oppgave5b}
 
 \begin{acknowledgements}
 Vi ønsker å takke det norske folk for deres støtte og hjelp i dette krevende arbeidet. 
