@@ -133,17 +133,17 @@
         =   \frac{u(x-h)+2u(x)- u(x+h)}{h^2} + O(h^2)
         =   f(x)
     \end{equation*}
-    Discretizing $x$ with a given distance $h$ between each distinct value then gives
+    Discretizing $x$ with $m$ values and a given distance $h$ between each distinct value then gives
     \begin{align*}
             x 
         \rightarrow 
-            x_0, x_1, x_2, ..., x_m\\
+            x_0, x_1, x_2, ..., x_{m - 1}\\
             u(x) 
         \rightarrow 
-            u_0, u_1, u_2, ..., u_m\\
+            u_0, u_1, u_2, ..., u_{m - 1}\\
             f(x) 
         \rightarrow 
-            f_0, f_1 , f_2, ..., f_m
+            f_0, f_1 , f_2, ..., f_{m - 1}
     \end{align*}
     with $u_i = v_i$, such that
     \begin{equation*}
@@ -164,8 +164,8 @@
             -v_2 + 2v_3- v_4 
         &=  h^2 f_3\\
         \vdots&\\
-            -v_{m-2} + 2 v_{m-1} - v_m
-        &=  h^2 f_{m-1}
+            -v_{m-3} + 2 v_{m-2} - v_{m - 1}
+        &=  h^2 f_{m-2}
     \end{align*}
     Wich for 
     \begin{align*}
@@ -176,10 +176,10 @@
             g_3
         =&  h^2 f_3\\
         &\vdots\\
-            g_{m - 2}
-        =&  h^2 f_{m-2}\\
+            g_{m - 3}
+        =&  h^2 f_{m-3}\\
             g_{m-1}
-        =&  h^2 f_{m-1} + v_{m}
+        =&  h^2 f_{m-2} + v_{m - 1}
     \end{align*}
     can be written as the matrix equation
     \begin{equation*}
@@ -197,10 +197,10 @@
                 0 & 0 & 0 & 0 & -1 & 2 
             \end{pmatrix}
             \begin{pmatrix}
-                v_1 \\ v_2 \\ v_3 \\ \vdots \\ v_{m - 2} \\ v_{m - 1} 
+                v_1 \\ v_2 \\ v_3 \\ \vdots \\ v_{m - 3} \\ v_{m - 2} 
             \end{pmatrix} 
         =   \begin{pmatrix}
-                g_1 \\ g_2 \\ g_3 \\ \vdots \\ g_{m - 2} \\ g_{m - 1}
+                g_1 \\ g_2 \\ g_3 \\ \vdots \\ g_{m - 3} \\ g_{m - 2}
             \end{pmatrix}
     \end{equation*}
     on the form $A\vec{v} = \vec{g}$.
