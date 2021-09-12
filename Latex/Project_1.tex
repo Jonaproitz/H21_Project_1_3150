@@ -117,7 +117,7 @@
         =   100e^{-10x}
         =   f(x)
     \end{equation*}
-    Hence \ref{u} is an exact solution to our problem.
+    Hence equation \ref{u} is an exact solution to our problem.
     \hfill$\blacksquare$
 
 
@@ -190,17 +190,20 @@
                 \\
                 0 & -1 & 2 & -1 & 0 & \dots
                 \\
-                \vdots & \vdots & & \ddots & \ddots
+                \vdots & \vdots & \ddots & \ddots & \ddots
                 \\
+                0 & 0 & 0 & -1 & 2 & -1
+                \\ 
                 0 & 0 & 0 & 0 & -1 & 2 
             \end{pmatrix}
             \begin{pmatrix}
-                v_1 \\ v_2 \\ v_3 \\ \vdots \\ v_{m - 1} 
+                v_1 \\ v_2 \\ v_3 \\ \vdots \\ v_{m - 2} \\ v_{m - 1} 
             \end{pmatrix} 
         =   \begin{pmatrix}
-                g_1 \\ g_2 \\ g_3 \\ \vdots \\ g_{m - 1}
+                g_1 \\ g_2 \\ g_3 \\ \vdots \\ g_{m - 2} \\ g_{m - 1}
             \end{pmatrix}
     \end{equation*}
+    on the form $A\vec{v} = \vec{g}$.
 
 
 \section*{Problem 5}
@@ -212,8 +215,15 @@
                 n
             =   m - 2
         \end{equation*}
+    
     \subsection*{b}
         \label{sec:oppgave5b}
+
+
+
+
+
+
 
 \begin{acknowledgements}
 Vi ønsker å takke det norske folk for deres støtte og hjelp i dette krevende arbeidet. 
