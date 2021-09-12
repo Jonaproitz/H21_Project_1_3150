@@ -2,6 +2,7 @@
 #include <armadillo>
 #include <iostream>
 #include <iomanip>
+#include <chrono>
 
 arma::vec func(arma::vec x){
     return 100 * exp(-10*x);
@@ -26,6 +27,9 @@ int main(int argc,char* argv[]){
     
     arma::vec v = arma::vec(n);
 
+    // Start measuring time
+    auto t1 = std::chrono::high_resolution_clock::now();
+
     for (int i = 1; i < n; i++){
         double fac = 1 / b_tilde(i - 1);
         b_tilde(i) = 2 - fac;
@@ -36,6 +40,12 @@ int main(int argc,char* argv[]){
     for (int i = n-2; i >= 0; i--){
         v(i) = (g_tilde(i) + v(i+1)) / b_tilde(i);
     }
+    // Stop measuring time
+    auto t2 = std::chrono::high_resolution_clock::now();
+
+    // Calculate the elapsed time
+    double duration_seconds = std::chrono::duration<double>(t2 - t1).count();
+
     arma::vec v_0 = arma::vec(1).fill(0.), v_m = arma::vec(1).fill(0.);
     arma::vec v_star = join_cols(v_0, v, v_m);
 
