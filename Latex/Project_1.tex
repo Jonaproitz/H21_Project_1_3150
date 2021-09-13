@@ -78,10 +78,13 @@
 
 \author{Jon Aleksander Prøitz and Marius Torsvoll}
 
+
 \begin{abstract}
 \noindent Relevant code can be found at:
 \url{https://github.com/Jonaproitz/Project_1}
 \end{abstract}
+
+\noaffiliation
 
 \maketitle
 %\date{Received - / Accepted -}
@@ -123,7 +126,12 @@
 
 \section*{Problem 2.}
     \label{sec:oppgave2}
-    Se githublink 
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.7]{exact_solution.pdf}
+        \caption{Plot of equation \ref{u} in the given area $x \in [0, 1]$.}
+        \label{exact_plot}
+    \end{figure}
 
 
 \section*{Problem 3.}
@@ -218,12 +226,12 @@
     
     \subsection*{b}
         \label{sec:5b}
-        Since $m = n+2 $ and $\vec{v}^* $ is of length m the vector thus has to be given by the following: 
+        As discussed above the the vector $\vec{v}$ is equal to $\vec{v}^*$ excluding the first and last element.
+        Hence
         \begin{equation}
-            \vec{v}^* = \left[v_0, \vec{V}, v_m \right]
+            \vec{v}^* = \left[v_0, \vec{v}, v_{m - 1} \right]
         \end{equation}
-        This is a result of task 4 as the first and last elements of the equation set is known. 
-        
+
 
 \section*{Problem 6}
     \subsection*{a}
@@ -315,11 +323,35 @@
 
         
 \section*{Task 7}
-    See the GitHub link
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.7]{comparison.pdf}
+        \caption{}
+        \label{comparison_plot}
+    \end{figure}
         
     
 \section*{Task 8}
-    See the GitHub link
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.7]{abs_error.pdf}
+        \caption{}
+        \label{abs_error}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.7]{rel_error.pdf}
+        \caption{}
+        \label{rel_error}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.7]{max_error.pdf}
+        \caption{}
+        \label{max_error}
+    \end{figure}
 
 
 \section*{Task 9}
