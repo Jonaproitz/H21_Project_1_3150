@@ -126,6 +126,7 @@
 
 \section*{Problem 2.}
     \label{sec:oppgave2}
+    Figure \ref{exact_plot} shows a plot of the exact solution to the one-dimensional poisson equation given by equation \ref{u}.
     \begin{figure}[!ht]
         \centering
         \includegraphics[scale=0.7]{exact_solution.pdf}
@@ -321,35 +322,64 @@
 
         
 \section*{Problem 7}
+    A comparison of the analytical and numerical solutions to the one-dimensional poisson equation is shown in fifure \ref{comparison_plot}.
+    Relevant code can be found at the linked github.
     \begin{figure}[!ht]
         \centering
-        \includegraphics[scale=0.7]{comparison.pdf}
-        \caption{}
+        \includegraphics[scale=0.6]{comparison.pdf}
+        \caption{Comparison of the analytical and numerical solutions of the one-dimensional poisson equation.}
         \label{comparison_plot}
     \end{figure}
         
     
 \section*{Problem 8}
+    \subsection*{a}
+    Figure \ref{abs_error} shows the difference between the numerical and exact solution.
     \begin{figure}[!ht]
         \centering
-        \includegraphics[scale=0.7]{abs_error.pdf}
-        \caption{}
+        \includegraphics[scale=0.6]{abs_error.pdf}
+        \caption{Absolute error of the numerical solution for different number of steps.}
         \label{abs_error}
     \end{figure}
 
+    \newpage
+    \subsection*{b}
+    Figure \ref{rel_error} shows the relative error in the numerical solution.
     \begin{figure}[!ht]
         \centering
-        \includegraphics[scale=0.7]{rel_error.pdf}
-        \caption{}
+        \includegraphics[scale=0.6]{rel_error.pdf}
+        \caption{Relative error of the numerical solution for different number of steps.}
         \label{rel_error}
     \end{figure}
 
+    \newpage
+    \subsection*{c}
+    The table below shows the maximum relative error for a given number of points.
+    This data is also represented in figure \ref{max_error}.
+    \begin{table}[ht!]
+        \centering
+        \begin{tabular}{c@{\hspace{1cm}} c}
+            \hline
+            Number of points & Output \\
+            \hline
+            10 &  9.682820e-02\\
+            100 &  8.498198e-04\\
+            1000.0 & 8.350052e-06\\
+            10000.0  & 8.342473e-08\\
+            100000.0 & 1.452374e-09\\
+            1000000.0 & 8.405051e-07\\
+            10000000.0 & 2.983866e-06\\
+            \hline
+        \end{tabular}\caption{Write a descriptive caption here, explaining the content of your table.}\label{tab:output_table}
+    \end{table}  
+    
     \begin{figure}[!ht]
         \centering
-        \includegraphics[scale=0.7]{max_error.pdf}
-        \caption{}
+        \includegraphics[scale=0.6]{max_error.pdf}
+        \caption{Maximum error of the numerical solution for different number of steps.}
         \label{max_error}
     \end{figure}
+    All code can be found at the linked github.
 
 
 \section*{Problem 9}
@@ -357,7 +387,7 @@
         \label{sec:9a}
         By making the special algorithm we then get the following results. 
         \begin{algorithm}[H]
-            \caption{General alorithm}\label{algo:general}
+            \caption{General alorithm}\label{algo:special}
             \begin{algorithmic}
                 \State $\tilde{b}_1 = 2$
                 \State $\tilde{g}_1 = g_1$
@@ -384,17 +414,23 @@
 
 
 \section*{Problem 10}
-See the GitHub link
+    Figure \ref{time} shows a plot of the difference in time between the special and general algorithm.
+    Notice both axis are logarithmic.
+    It is clear that the general algorithm needs more time to run and that the difference grows by a constant factor, as expected.
+    It is not clear what units the time is given in, note that the snippet used to get the time was clear that it would be in seconds.
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.7]{time_comparison.pdf}
+        \caption{Comparison of the times the two algorithm needed to run.}
+        \label{time}
+    \end{figure}
+
 
 
 \section*{Problem 11}
-        
+    Unfortunately we did not have time to answer this quation.
 
 
-
-\begin{acknowledgements}
-Vi ønsker å takke det norske folk for deres støtte og hjelp i dette krevende arbeidet. 
-\end{acknowledgements}
 
    
 \end{document}
