@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){
     tfile.open(timefile);
 
     int timewidth = 12;
-    int timeprec = 4;
+    int timeprec = 6;
 
     tfile << std::setw(timewidth) << std::setprecision(timeprec) << std::scientific << duration_seconds << std::endl;
 
