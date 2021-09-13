@@ -18,7 +18,7 @@ def p(filename):
 	plt.ylabel("$u(x)$", fontsize=13)
 
 	plt.grid()
-	plt.show()
+	plt.savefig("exact_solution.pdf")
 
 p("matrix.txt")
 
