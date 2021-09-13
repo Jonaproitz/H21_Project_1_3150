@@ -356,23 +356,28 @@
     \subsection*{a}
         \label{sec:9a}
         By making the special algorithm we then get the following results. 
-        \begin{align*}
-                \tilde{b}_1 
-            =   2\\
-                \tilde{b}_i
-            =   2 - \frac{1}{\tilde{b}_{i-1}}\\
-                \tilde{g}_1 
-            =   g_1\\
-                \tilde{g}_i 
-            =   g_i + \frac{1}{\tilde{b}_{i-1}}\tilde{g}_{i-1}\\
-                v_n 
-            =   \frac{\tilde{g}_n}{\tilde{b}_n}\\
-                v_i 
-            =   \frac{\tilde{g}_i+v_{i+1}}{\tilde{b}_i}
-        \end{align*}
+        \begin{algorithm}[H]
+            \caption{General alorithm}\label{algo:general}
+            \begin{algorithmic}
+                \State $\tilde{b}_1 = 2$
+                \State $\tilde{g}_1 = g_1$
+                \For{$i = 2, 3, ..., n$}
+                    \State $\gamma = \frac{1}{\tilde{b}_{i - 1}}$
+                    \State $\tilde{b}_i = 2 - \gamma$
+                    \State $\tilde{g}_i = g_i + \gamma\tilde{g}_{i-1}$
+                \EndFor
+                \State $v_n = \frac{\tilde{g}_n}{\tilde{b}_n}$
+                \For{$i = n-1, n-2, ... , 1$}
+                    \State $v_i = \frac{\tilde{g}_i + v_{i+1}}{\tilde{b}_i}$
+                \EndFor
+            \end{algorithmic}
+        \end{algorithm}
+
     \subsection*{b}
         \label{sec:9b}
-        The number of flops for this special algorithm will then be described as: $$6(n-1)(+1)$$
+        Notice that the first for loop contains $4(n-1)$ FLOPs while the second for loop contains $2(n-1)$ FLOPs.
+        Hence the total number of FLOPs is roughly $6(n-1)$.
+
     \subsection*{c}
         \label{sec:9c}
         See the GitHub link
