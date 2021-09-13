@@ -2,6 +2,7 @@
 #include <armadillo>
 #include <iomanip>
 #include <iostream>
+#include <chrono>
 
 arma::vec f_i(arma::vec x){
     arma::vec val = 100 * exp(-10*x);
@@ -38,6 +39,9 @@ int main(int argc, char* argv[]){
 
     arma::vec v_star_1 = arma::vec(1).fill(v_0), v_star_m = arma::vec(1).fill(v_m);
 
+    // Start measuring time
+    auto t1 = std::chrono::high_resolution_clock::now();
+
     // Running over steps in the algorithm
     b_tilde(0) = b(0);
     g_tilde(0) = g(0);
@@ -52,6 +56,21 @@ int main(int argc, char* argv[]){
         v(i) = (g_tilde(i) - c(i)*v(i+1)) / b_tilde(i);
     }
     
+    // Stop measuring time
+    auto t2 = std::chrono::high_resolution_clock::now();
+
+    // Calculate the elapsed time
+    double duration_seconds = std::chrono::duration<double>(t2 - t1).count();
+    std::string timefile = "time.txt";
+    std::ofstream tfile;
+    tfile.open(timefile);
+
+    int timewidth = 12;
+    int timeprec = 4;
+
+    tfile << std::setw(timewidth) << std::setprecision(timeprec) << std::scientific << duration_seconds << std::endl;
+
+    tfile.close();
     // Implement solution into the complete solution
     arma::vec v_star = join_cols(v_star_1, v, v_star_m);
 

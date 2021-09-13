@@ -46,6 +46,17 @@ int main(int argc,char* argv[]){
     // Calculate the elapsed time
     double duration_seconds = std::chrono::duration<double>(t2 - t1).count();
 
+    std::string timefile = "time.txt";
+    std::ofstream tfile;
+    tfile.open(timefile);
+
+    int timewidth = 12;
+    int timeprec = 4;
+
+    tfile << std::setw(timewidth) << std::setprecision(timeprec) << std::scientific << duration_seconds << std::endl;
+
+    tfile.close();
+
     arma::vec v_0 = arma::vec(1).fill(0.), v_m = arma::vec(1).fill(0.);
     arma::vec v_star = join_cols(v_0, v, v_m);
 
